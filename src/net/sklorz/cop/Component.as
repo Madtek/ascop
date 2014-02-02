@@ -1,62 +1,35 @@
 package net.sklorz.cop {
-	import flash.utils.Dictionary;
 	/**
-	 * Basic component to seperate logic. 
+	 * Basic component to implement logic modules for Entities.
 	 * 
 	 * @author gregor
 	 */
-	public class Component {
-		public static const all:Vector.<Component> = new Vector.<Component>();
+	public class Component 
+	{
+		public static const ALL:Vector.<Entity> = new Vector.<Entity>();
+		protected final var _id : String;
+		protected var _keeper : Entity;
 		
-		private const components:Dictionary = new Dictionary();
-		protected const id:String;		
-		public var keeper:Component;
-		
-		public function Component(){
-			all.push(this);
+		public function Component(id:String) : void 
+		{
+			_id = id;
+			ALL.push(this);
+		}
+
+		/**
+		 * The current entity which keeps the component currently.
+		 */
+		public function set keeper(entity:Entity) : void 
+		{
+			_keeper = entity;
 		}
 		
 		/**
-		 * Adds a further component to this component.
+		 * The type id of this component.
 		 */
-		public function addComponent(comp:Component):void{
-			if(!comp.id){
-				trace("Adding uninitilized component not allowed to [" + id + "]");
-				return;
-			}
-			
-			if(components[comp.id]){
-				trace("Component [" + comp.id + "] already added to [" + id + "]");
-				return;
-			}
-			
-			comp.keeper = this;
-			components[comp.id] = comp;
+		public function get id() : String 
+		{
+			return _id;
 		}
-		
-		/**
-		 * Removes a component from this component.
-		 */
-		public function removeComponent(compID:String):void{
-			if(!components[compID]){
-				trace("Component [" + compID + "] not existant in [" + id + "]");
-				return;
-			}
-			
-			Component(components[compID]).keeper = null;
-			delete components[compID];
-		}
-		
-		/**
-		 * Returns the called component from the this keeping component.
-		 */
-		 public function getComponent(compID:String):Component{
-			if(!components[compID]){
-				trace("No component [" + compID + "] found in [" + id + "]");
-				return null;
-			}
-			
-			return components[compID];
-		 }
 	}
 }
