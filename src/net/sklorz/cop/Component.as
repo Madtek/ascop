@@ -7,7 +7,7 @@ package net.sklorz.cop {
 	public class Component 
 	{
 		public static const ALL:Vector.<Entity> = new Vector.<Entity>();
-		protected final var _id : String;
+		protected var _id : String;
 		protected var _keeper : Entity;
 		
 		public function Component(id:String) : void 

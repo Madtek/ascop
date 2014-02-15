@@ -25,6 +25,9 @@ package net.sklorz.cop {
 				return;
 			}
 			
+			var v:Vector.<Component> = new Vector.<Component>();
+			v.
+			
 			if(components[comp.id])
 			{
 				trace("Component [" + comp.id + "] already added to [" + id + "]");
