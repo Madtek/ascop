@@ -2,7 +2,7 @@ package net.sklorz.cop {
 	/**
 	 * Basic component to implement logic modules for Entities.
 	 * 
-	 * @author gregor
+	 * @author gregor@sklorz.net
 	 */
 	public class Component 
 	{
@@ -17,15 +17,24 @@ package net.sklorz.cop {
 		}
 
 		/**
+		 * The current keeper which keeps the component currently.
+		 */
+		internal function setKeeper(keeper:Keeper) : void 
+		{
+			_keeper = keeper;
+		}
+		
+		/**
 		 * The current entity which keeps the component currently.
 		 */
-		public function set keeper(entity:Keeper) : void 
+		public function get keeper() : Keeper 
 		{
-			_keeper = entity;
+			return _keeper;
 		}
 		
 		/**
 		 * The type id of this component.
+		 * Could be an static property since it should be definde class wise. But want to force a id definition.
 		 */
 		public function get id() : String 
 		{
