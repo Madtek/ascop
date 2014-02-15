@@ -6,9 +6,9 @@ package net.sklorz.cop {
 	 */
 	public class Component 
 	{
-		public static const ALL:Vector.<Entity> = new Vector.<Entity>();
+		public static const ALL:Vector.<Keeper> = new Vector.<Keeper>();
 		protected var _id : String;
-		protected var _keeper : Entity;
+		protected var _keeper : Keeper;
 		
 		public function Component(id:String) : void 
 		{
@@ -19,7 +19,7 @@ package net.sklorz.cop {
 		/**
 		 * The current entity which keeps the component currently.
 		 */
-		public function set keeper(entity:Entity) : void 
+		public function set keeper(entity:Keeper) : void 
 		{
 			_keeper = entity;
 		}

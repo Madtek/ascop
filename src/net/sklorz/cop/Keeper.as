@@ -2,14 +2,15 @@ package net.sklorz.cop {
 	import flash.utils.Dictionary;
 	/**
 	 * Basic component to seperate logic. 
+	 * Keeper of Components.
 	 * 
 	 * @author gregor
 	 */
-	public class Entity extends Component
+	public class Keeper extends Component
 	{		
 		private const components:Dictionary = new Dictionary();
 		
-		public function Entity(id:String = "ENTITY")
+		public function Keeper(id:String = "ENTITY")
 		{
 			super(id);
 		}
@@ -24,9 +25,6 @@ package net.sklorz.cop {
 				trace("Adding uninitilized component not allowed to [" + id + "]");
 				return;
 			}
-			
-			var v:Vector.<Component> = new Vector.<Component>();
-			v.
 			
 			if(components[comp.id])
 			{
@@ -55,7 +53,7 @@ package net.sklorz.cop {
 		/**
 		 * Returns the called component from the this keeping Entity.
 		 */
-		 public function getComponent(compID:String):Entity{
+		 public function getComponent(compID:String):Keeper{
 			if(!components[compID])
 			{
 				trace("No component [" + compID + "] found in [" + id + "]");
