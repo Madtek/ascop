@@ -31,7 +31,7 @@ package net.sklorz.cop {
 				components[comp.id] = new Vector.<Component>();
 			}
 			
-			comp.setKeeper(this);
+			comp.addKeeper(this);
 			Vector.<Component>(components[comp.id]).push(comp);
 		}
 		
@@ -56,7 +56,7 @@ package net.sklorz.cop {
 				return;
 			}
 			
-			comp.setKeeper(null);
+			comp.removeKeeper(this);
 			comps.splice(comps.indexOf(comp), 1);
 		}
 		
