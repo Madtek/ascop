@@ -39,6 +39,12 @@ package net.sklorz.cop {
 			}
 			
 			_keeper.splice(i, 1);
+			
+			if(_keeper.length == 0)
+			{
+				i = ALL.indexOf(keeper);
+				ALL.splice(i, 1);
+			}
 		}
 		
 		/**
@@ -56,6 +62,15 @@ package net.sklorz.cop {
 		public function get id() : String 
 		{
 			return _id;
+		}
+		
+		/**
+		 * Removes Component from all keepers.
+		 */
+		public function dispose() : void 
+		{
+			_keeper.length = 0;
+			ALL.splice(ALL.indexOf(keeper), 1);
 		}
 	}
 }

@@ -73,5 +73,19 @@ package net.sklorz.cop {
 			
 			return components[compID];
 		 }
+		 
+		/**
+		 * Removes Component from all keepers.
+		 */
+		public override function dispose() : void 
+		{
+			super.dispose();
+			
+			for (var v:String in components) 
+			{
+				Vector.<Function>(components[v]).length = 0;
+				delete components[v];
+			}
+		}
 	}
 }
