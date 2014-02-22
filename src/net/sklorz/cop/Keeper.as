@@ -8,11 +8,11 @@ package net.sklorz.cop {
 	 */
 	public class Keeper extends Component
 	{		
-		private const components:Dictionary = new Dictionary();
+		private var components:Dictionary = new Dictionary();
 		
-		public function Keeper(id:String)
+		public function Keeper()
 		{
-			super(id);
+			
 		}
 		
 		/**
@@ -20,19 +20,13 @@ package net.sklorz.cop {
 		 */
 		public function addComponent(comp:Component):void
 		{
-			if(!comp.id)
+			if(!components[comp.clazz])
 			{
-				trace("Adding uninitilized component not allowed. [" + id + "]");
-				return;
-			}
-			
-			if(!components[comp.id])
-			{
-				components[comp.id] = new Vector.<Component>();
+				components[comp.clazz] = new Vector.<Component>();
 			}
 			
 			comp.addKeeper(this);
-			Vector.<Component>(components[comp.id]).push(comp);
+			Vector.<Component>(components[comp.clazz]).push(comp);
 		}
 		
 		/**
@@ -42,17 +36,17 @@ package net.sklorz.cop {
 		{
 			var comps : Vector.<Component>;
 			
-			if(!components[comp.id])
+			if(!components[comp.clazz])
 			{
-				trace("No Component [" + comp.id + "] exists in [" + id + "]");
+				trace("No Component " + comp.clazz + " exists in " + clazz );
 				return;
 			}
 			
-			comps = Vector.<Component>(components[comp.id]);
+			comps = Vector.<Component>(components[comp.clazz]);
 			
 			if(comps.indexOf(comp) < 0)
 			{
-				trace("No Component [" + comp.id + "] exists in [" + id + "]");
+				trace("No Component " + comp.clazz + " exists in " + clazz );
 				return;
 			}
 			
@@ -61,17 +55,17 @@ package net.sklorz.cop {
 		}
 		
 		/**
-		 * Returns the called component from the keeper.
+		 * Returns the called component by type from the keeper.
 		 */
-		 public function getComponents(compID:String):Vector.<Component>
+		 public function getComponents(type:Class):Vector.<Component>
 		 {
-			if(!components[compID] || Vector.<Component>(components[compID]).length == 0)
+			if(!components[type] || Vector.<Component>(components[type]).length == 0)
 			{
-				trace("No component [" + compID + "] found in [" + id + "]");
+				trace("No component " + type + " found in " + clazz );
 				return null;
 			}
 			
-			return components[compID];
+			return components[type];
 		 }
 		 
 		/**
@@ -81,10 +75,10 @@ package net.sklorz.cop {
 		{
 			super.dispose();
 			
-			for (var v:String in components) 
+			for (var type in components) 
 			{
-				Vector.<Function>(components[v]).length = 0;
-				delete components[v];
+				Vector.<Function>(components[type]).length = 0;
+				delete components[type];
 			}
 		}
 	}
