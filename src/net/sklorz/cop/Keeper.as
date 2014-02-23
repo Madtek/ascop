@@ -12,7 +12,7 @@ package net.sklorz.cop {
 		
 		public function Keeper()
 		{
-			
+			super();
 		}
 		
 		/**

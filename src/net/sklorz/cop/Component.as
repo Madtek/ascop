@@ -38,7 +38,7 @@ package net.sklorz.cop {
 		/**
 		 * The current keeper which keeps the component currently.
 		 */
-		public function addKeeper(keeper:Keeper) : void 
+		internal function addKeeper(keeper:Keeper) : void 
 		{
 			_keeper.push(keeper);
 		}
@@ -46,7 +46,7 @@ package net.sklorz.cop {
 		/**
 		 * The current keeper which keeps the component currently.
 		 */
-		public function removeKeeper(keeper:Keeper) : void 
+		internal function removeKeeper(keeper:Keeper) : void 
 		{
 			var i:int = _keeper.indexOf(keeper);
 			
