@@ -80,10 +80,18 @@ package net.sklorz.cop {
 		 */
 		public function dispose() : void 
 		{
+			//From ALL vector
 			var vtmp:Vector.<Component> = Vector.<Component>(ALL[_clazz]);
+			vtmp.splice(vtmp.indexOf(this), 1);
 			
+			//From all keepers
+			var i : int;
+			var n:int = _keeper.length;
+			for (i  = 0; i < n; i++) 
+			{
+				_keeper[i].removeComponent(this);
+			}
 			_keeper.length = 0;
-			vtmp.splice(vtmp.indexOf(keeper), 1);
 		}
 	}
 }

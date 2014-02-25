@@ -77,7 +77,7 @@ package net.sklorz.cop {
 			
 			for (var type in components) 
 			{
-				Vector.<Function>(components[type]).length = 0;
+				Vector.<Component>(components[type]).length = 0;
 				delete components[type];
 			}
 		}
