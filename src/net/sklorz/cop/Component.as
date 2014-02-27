@@ -87,9 +87,9 @@ package net.sklorz.cop {
 			//From all keepers
 			var i : int;
 			var n:int = _keeper.length;
-			for (i  = 0; i < n; i++) 
+			for (i = 0; i < n; i++) 
 			{
-				_keeper[i].removeComponent(this);
+				_keeper[0].removeComponent(this);
 			}
 			_keeper.length = 0;
 		}

@@ -8,7 +8,7 @@ package net.sklorz.cop {
 	 */
 	public class Keeper extends Component
 	{		
-		private var components:Dictionary = new Dictionary();
+		private var _components:Dictionary = new Dictionary();
 		
 		public function Keeper()
 		{
@@ -20,12 +20,13 @@ package net.sklorz.cop {
 		 */
 		public function addComponent(comp:Component):void
 		{
-			if(!components[comp.clazz])
+			trace("Keeper.addComponent(" + _components[comp.clazz] + ") FOO");
+			if(!_components[comp.clazz])
 			{
-				components[comp.clazz] = new Vector.<Component>();
+				_components[comp.clazz] = new Vector.<Component>();
 			}
 			
-			var comps:Vector.<Component> = Vector.<Component>(components[comp.clazz]);
+			var comps:Vector.<Component> = Vector.<Component>(_components[comp.clazz]);
 			
 			if(comps.indexOf(comp) >= 0)
 			{
@@ -44,13 +45,13 @@ package net.sklorz.cop {
 		{
 			var comps : Vector.<Component>;
 			
-			if(!components[comp.clazz])
+			if(!_components[comp.clazz])
 			{
 				trace("No Component " + comp.clazz + " exists in " + clazz );
 				return;
 			}
 			
-			comps = Vector.<Component>(components[comp.clazz]);
+			comps = Vector.<Component>(_components[comp.clazz]);
 			
 			if(comps.indexOf(comp) < 0)
 			{
@@ -67,13 +68,13 @@ package net.sklorz.cop {
 		 */
 		 public function getComponents(type:Class):Vector.<Component>
 		 {
-			if(!components[type] || Vector.<Component>(components[type]).length == 0)
+			if(!_components[type] || Vector.<Component>(_components[type]).length == 0)
 			{
 				trace("No component " + type + " found in " + clazz );
 				return null;
 			}
 			
-			return components[type];
+			return _components[type];
 		 }
 		 
 		/**
@@ -83,10 +84,14 @@ package net.sklorz.cop {
 		{
 			super.dispose();
 			
-			for (var type:String in components) 
+			for each (var vec:Vector.<Component> in _components)
 			{
-				Vector.<Component>(components[type]).length = 0;
-				delete components[type];
+				vec.length = 0;
+			}
+			
+			for (var type:String in _components) 
+			{
+				delete _components[type];
 			}
 		}
 	}

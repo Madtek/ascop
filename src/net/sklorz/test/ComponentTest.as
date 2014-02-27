@@ -46,9 +46,9 @@ package net.sklorz.test {
 		public function instances_in_ALL() : void 
 		{
 			//TODO: Check dispose & ALL.addition
-			Assert.assertEquals(c.all.length, 1);
-			Assert.assertEquals(k1.all.length, 2);
-			Assert.assertEquals(comp.all.length, 1);
+			Assert.assertEquals(1, c.all.length);
+			Assert.assertEquals(2, k1.all.length);
+			Assert.assertEquals(1, comp.all.length);
 		}
 		
 		[Test]
@@ -70,7 +70,7 @@ package net.sklorz.test {
 		}
 		
 		[Test]
-		public function adding_same_Keeper_List() : void 
+		public function adding_same_Keeper_List() : void
 		{
 			k1.addComponent(c);
 			
