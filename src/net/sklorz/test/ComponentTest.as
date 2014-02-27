@@ -4,7 +4,6 @@ package net.sklorz.test {
 	import flexunit.framework.Assert;
 
 	public class ComponentTest {
-		private var counter : int = 0;
 		private var c : Component;
 		private var comp : Comp;
 		private var k1 : Keeper;
@@ -47,7 +46,7 @@ package net.sklorz.test {
 		public function instances_in_ALL() : void 
 		{
 			//TODO: Check dispose & ALL.addition
-			Assert.assertEquals(c.all.length, 4);
+			Assert.assertEquals(c.all.length, 1);
 			Assert.assertEquals(k1.all.length, 2);
 			Assert.assertEquals(comp.all.length, 1);
 		}
@@ -61,19 +60,25 @@ package net.sklorz.test {
 		[Test]
 		public function adding1_Keeper_List() : void 
 		{
-			counter++;
 			k1.addComponent(c);
 			
-			Assert.assertEquals(c.keeper.length, counter);
+			Assert.assertEquals(c.keeper.length, 1);
+			
+			k2.addComponent(c);
+			
+			Assert.assertEquals(c.keeper.length, 2);
 		}
 		
 		[Test]
-		public function adding2_Keeper_List() : void 
+		public function adding_same_Keeper_List() : void 
 		{
-			counter++;
-			k2.addComponent(c);
+			k1.addComponent(c);
 			
-			Assert.assertEquals(c.keeper.length, counter);
+			Assert.assertEquals(c.keeper.length, 1);
+			
+			k1.addComponent(c);
+			
+			Assert.assertEquals(c.keeper.length, 1);
 		}
 		
 		[Test]

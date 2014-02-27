@@ -25,8 +25,16 @@ package net.sklorz.cop {
 				components[comp.clazz] = new Vector.<Component>();
 			}
 			
+			var comps:Vector.<Component> = Vector.<Component>(components[comp.clazz]);
+			
+			if(comps.indexOf(comp) >= 0)
+			{
+				trace("Keeper.addComponent(" + comp + ") : Component already added.");
+				return;
+			}
+			
 			comp.addKeeper(this);
-			Vector.<Component>(components[comp.clazz]).push(comp);
+			comps.push(comp);
 		}
 		
 		/**
@@ -75,7 +83,7 @@ package net.sklorz.cop {
 		{
 			super.dispose();
 			
-			for (var type:Class in components) 
+			for (var type:String in components) 
 			{
 				Vector.<Component>(components[type]).length = 0;
 				delete components[type];
