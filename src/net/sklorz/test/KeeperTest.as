@@ -35,8 +35,31 @@ package net.sklorz.test{
 		[Test]
 		public function add_and_get_Instance() : void {
 			k.addComponent(c1);
+			k.addComponent(c2);
+			k.addComponent(comp);
 			
 			Assert.assertEquals(c1, k.getComponents(Component)[0]);
+			Assert.assertEquals(comp, k.getComponents(Comp)[0]);
+		}
+		
+		[Test]
+		public function remove_and_get_Instance() : void {
+			k.addComponent(c1);
+			k.addComponent(c2);
+			k.addComponent(comp);
+			k.removeComponent(c2);
+			k.removeComponent(c1);
+			
+			Assert.assertNull( k.getComponents(Component) );
+		}
+		
+		[Test]
+		public function add2_and_get_Instance() : void {
+			k.addComponent(c1);
+			k.addComponent(c2);
+			k.addComponent(comp);
+			
+			Assert.assertEquals( 2, k.getComponents(Component).length );
 		}
 	}
 }

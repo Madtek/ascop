@@ -75,7 +75,7 @@ package net.sklorz.cop {
 		{
 			super.dispose();
 			
-			for (var type in components) 
+			for (var type:Class in components) 
 			{
 				Vector.<Component>(components[type]).length = 0;
 				delete components[type];
