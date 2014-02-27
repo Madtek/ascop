@@ -89,7 +89,7 @@ package net.sklorz.cop {
 				vec.length = 0;
 			}
 			
-			for (var type:String in _components) 
+			for (var type:Object in _components) 
 			{
 				delete _components[type];
 			}
